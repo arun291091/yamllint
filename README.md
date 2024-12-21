@@ -20,9 +20,9 @@ An action has been created to add an yaml linter only to the specific files that
 
 like : [Sample Yaml Linter to be added in your repo](https://github.com/arun291091/yamllint/blob/main/.github/workflows/sampleyamllinter.yaml)
 
-### It run the yaml linter only to the newly created/modified files of PR and publishes the result in the Github Summary. 
-### It only checks for Syntax and indendation error, You can control the rest via .yamllint in your root directory.
-### It throws warning for indendation error and fail for syntax errors. 
+#### It runs the yaml linter only to the newly created/modified files of PR and publishes the result in the Github Summary. 
+#### It only checks for Syntax and indendation error, You can control the rest via .yamllint in your root directory.
+#### It throws warning for indendation error and fail for syntax errors. 
 
 Sample yamllint : [.yamllint](https://github.com/arun291091/yamllint/blob/main/.yamllint)
 
