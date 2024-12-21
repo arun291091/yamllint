@@ -1,0 +1,19 @@
+# .yamllint configuration file
+# Extends a base configuration but only keeps syntax checking active.
+
+extends: relaxed  # Start with a relaxed set of rules
+
+rules:
+  # Disable all rules except syntax checking
+  line-length: disable         # Ignore line length limits
+  trailing-spaces: disable     # Ignore trailing spaces
+  new-line-at-end-of-file: disable  # Ignore missing new line at EOF
+  document-start: disable      # Ignore missing document start (`---`)
+  empty-lines: disable         # Ignore empty line rules
+  key-duplicates: disable      # Ignore duplicate keys
+  braces: disable              # Ignore braces formatting
+  colons: disable              # Ignore colon alignment rules
+  commas: disable              # Ignore comma spacing
+  comments: disable            # Ignore comment rules
+  comments-indentation: disable # Ignore comment indentation
+  hyphens: disable             # Ignore hyphen alignment rules
