@@ -18,7 +18,7 @@ if you need to execute yaml linter only to the specific files that was modified 
 
 An action has been created to add an yaml linter only to the specific files that was modified in your PR. It has all the dependancies installed, all you have to do is use this and create a yamlinter.yaml in your repo.
 
-like : 
+like : https://github.com/arun291091/yamllint/blob/main/.github/workflows/sampleyamllinter.yaml 
 
 
 ## How to use?
