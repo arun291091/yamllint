@@ -14,12 +14,17 @@ on:
 
 
 jobs:
-  wait_for_approval:
+  yaml-linter:
     runs-on: ubuntu-latest
     name: yamllint
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+        
+      - name: Printing Shell
+        shell: bash
+        run: |
+          echo "Running on ${{ runner.os }}"
 
       - name: yamllint Action
         uses: ./
