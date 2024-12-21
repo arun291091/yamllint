@@ -20,7 +20,6 @@ runs:
           fetch-depth: 0
   
       - name: Set up Python
-        shell: bash
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
