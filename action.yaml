@@ -20,15 +20,18 @@ runs:
           fetch-depth: 0
   
       - name: Set up Python
+        shell: bash
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
       - name: Install yamllint
+        shell: bash
         run: |
           pip install yamllint
 
       - name: Get Modified Files
+        shell: bash
         id: get_changed_files
         run: |
           git fetch origin ${{ github.base_ref }} # Fetch base branch
@@ -38,11 +41,13 @@ runs:
           echo "CHANGED_FILES=${CHANGED_FILES}" >> $GITHUB_ENV
 
       - name: Display Modified Files
+        shell: bash
         run: |
           echo "Modified YAML files:"
           cat changed-files.txt
 
       - name: Run yamllint on Modified Files
+        shell: bash
         if: ${{ env.CHANGED_FILES != '' }}
         run: |
           echo "${{ env.CHANGED_FILES }}" | xargs -n 1 yamllint --config-file .yamllint
