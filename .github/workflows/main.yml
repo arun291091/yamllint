@@ -28,3 +28,4 @@ jobs:
 
       - name: yamllint Action
         uses: ./
+        shell: bash
