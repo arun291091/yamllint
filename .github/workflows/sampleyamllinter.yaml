@@ -1,0 +1,13 @@
+name: Yaml Lint
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches: [ "main" ]
+
+jobs:
+  yaml-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Yaml Linter GHA Action
+        uses: arun291091/yamllinter@v1
