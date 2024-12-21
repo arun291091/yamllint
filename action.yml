@@ -1,0 +1,49 @@
+#### Add a wait for Approval stage to your GitHub Action workflow ##############
+# Copyright (c) Arunkumar Krishnakumar
+
+name: 'Yaml Linter GHA'
+description: 'Add a yaml linter stage to your GitHub Action workflow to check the Specific PR'
+branding:
+  icon: 'chevron-up'
+  color: 'blue'
+
+
+runs:
+    using: 'composite'
+    steps:
+
+  # # # # # #  # Check if needed for Prod # # # # # # # # #
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+  
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install yamllint
+        run: |
+          pip install yamllint
+
+      - name: Get Modified Files
+        id: get_changed_files
+        run: |
+          git fetch origin ${{ github.base_ref }} # Fetch base branch
+          git diff --name-only --diff-filter=AM origin/${{ github.base_ref }} | grep '\.yaml$' > changed-files.txt || true
+          # Escape file paths and set as environment variable
+          CHANGED_FILES=$(awk '{gsub(/ /, "\\ "); print}' changed-files.txt | tr '\n' ' ')
+          echo "CHANGED_FILES=${CHANGED_FILES}" >> $GITHUB_ENV
+
+      - name: Display Modified Files
+        run: |
+          echo "Modified YAML files:"
+          cat changed-files.txt
+
+      - name: Run yamllint on Modified Files
+        if: ${{ env.CHANGED_FILES != '' }}
+        run: |
+          echo "${{ env.CHANGED_FILES }}" | xargs -n 1 yamllint --config-file .yamllint
+
